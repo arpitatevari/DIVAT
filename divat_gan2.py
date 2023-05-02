@@ -22,7 +22,7 @@ os.chdir('ClothingGan')
 torch.autograd.set_grad_enabled(False)
 torch.backends.cudnn.benchmark = True
 
-# Specify model to use
+
 config = Config(
   model='StyleGAN2',
   layer='style',
