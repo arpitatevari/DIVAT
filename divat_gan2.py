@@ -17,7 +17,7 @@ from config import Config
 from skimage import img_as_ubyte
 import os
 
-os.chdir('ClothingGan')
+os.chdir('DIVAT_GAN2\ClothingGAN')
 # Speed up computation
 torch.autograd.set_grad_enabled(False)
 torch.backends.cudnn.benchmark = True
@@ -33,7 +33,7 @@ config = Config(
 )
 
 inst = get_instrumented_model(config.model, config.output_class,
-                              config.layer, torch.device('cuda'), use_w=config.use_w)
+                              config.layer, torch.device('cpu'), use_w=config.use_w)
 
 path_to_components = get_or_compute(config, inst)
 
@@ -165,7 +165,7 @@ def display_sample_pytorch(seed, truncation, directions, distances, scale, start
       for i in range(len(directions)):
         w[l] = w[l] + directions[i] * distances[i] * scale
     
-    torch.cuda.empty_cache()
+    # torch.cuda.empty_cache()
     #save image and display
     out = model.sample_np(w)
     final_im = Image.fromarray((out * 255).astype(np.uint8)).resize((500,500),Image.LANCZOS)

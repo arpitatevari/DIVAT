@@ -1,3 +1,4 @@
+#pip install -r requirements.txt
 ninja
 gradio
 fbpca
@@ -5,7 +6,7 @@ boto3
 requests==2.23.0
 urllib3==1.25.11
 nltk
+scikit-learn
 ipywidgets
 imageio
-config
-skimage
+gdown
